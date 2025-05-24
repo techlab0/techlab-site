@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 追加カスタム */
+html {
+  scroll-behavior: smooth;
+}
