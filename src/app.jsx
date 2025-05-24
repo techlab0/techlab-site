@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from "/techlab_logo.png";       // public 配下のロゴ
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('automation');
