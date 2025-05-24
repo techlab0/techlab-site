@@ -1,4 +1,5 @@
-import nodemailer from 'nodemailer';
+// Vercel Functions用の正しいインポート方法
+const nodemailer = require('nodemailer');
 
 export default async function handler(req, res) {
   // CORS設定
@@ -16,9 +17,19 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  // デバッグ用ログ
+  console.log('Environment variables check:');
+  console.log('GMAIL_USER:', process.env.GMAIL_USER ? 'Set' : 'Not set');
+  console.log('GMAIL_APP_PASSWORD:', process.env.GMAIL_APP_PASSWORD ? 'Set' : 'Not set');
+
   const { name, email, company, message } = req.body;
 
-  // Gmail設定
+  // 入力値チェック
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: '必須項目が入力されていません' });
+  }
+
+  // Gmail設定（正しいcreateTransporter呼び出し）
   const transporter = nodemailer.createTransporter({
     service: 'gmail',
     auth: {
@@ -28,6 +39,10 @@ export default async function handler(req, res) {
   });
 
   try {
+    // 設定テスト
+    await transporter.verify();
+    console.log('Gmail transporter verified successfully');
+
     // あなたへの通知メール
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
@@ -58,9 +73,13 @@ export default async function handler(req, res) {
       `
     });
 
+    console.log('Emails sent successfully');
     res.status(200).json({ message: '送信完了' });
   } catch (error) {
-    console.error('メール送信エラー:', error);
-    res.status(500).json({ message: '送信失敗' });
+    console.error('メール送信エラー詳細:', error);
+    res.status(500).json({ 
+      message: '送信失敗', 
+      error: error.message
+    });
   }
 }
