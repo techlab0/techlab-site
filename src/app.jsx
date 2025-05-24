@@ -8,12 +8,43 @@ export default function App() {
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      // EmailJS設定（実際の設定は後で行う）
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('送信エラー:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (sectionId) => {
@@ -914,7 +945,7 @@ export default function App() {
             {/* Contact Form */}
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-6">無料相談フォーム</h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     お名前 <span className="text-red-400">*</span>
@@ -978,14 +1009,32 @@ export default function App() {
                   />
                 </div>
                 
+                {/* 送信状況表示 */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-900/50 border border-green-700 rounded-lg text-green-300">
+                    お問い合わせありがとうございます！24時間以内にご返信いたします。
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-900/50 border border-red-700 rounded-lg text-red-300">
+                    送信に失敗しました。お手数ですが、直接メールでお問い合わせください。
+                  </div>
+                )}
+                
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-cyan-400 text-black hover:bg-cyan-300 transition-all duration-300 rounded-lg font-semibold flex items-center justify-center space-x-2"
+                  disabled={isSubmitting}
+                  className={`w-full px-8 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-all duration-300 ${
+                    isSubmitting 
+                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed' 
+                      : 'bg-cyan-400 text-black hover:bg-cyan-300'
+                  }`}
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
-                  <span>無料相談を申し込む</span>
+                  <span>{isSubmitting ? '送信中...' : '問い合わせる'}</span>
                 </button>
               </form>
             </div>
