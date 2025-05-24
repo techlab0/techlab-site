@@ -1,7 +1,7 @@
-// Vercel Functions用の正しいインポート方法
+// Vercel Functions用の完全修正版
 const nodemailer = require('nodemailer');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS設定
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: '必須項目が入力されていません' });
   }
 
-  // Gmail設定（正しいcreateTransporter呼び出し）
+  // Gmail設定（完全CommonJSスタイル）
   const transporter = nodemailer.createTransporter({
     service: 'gmail',
     auth: {
@@ -82,4 +82,4 @@ export default async function handler(req, res) {
       error: error.message
     });
   }
-}
+};
