@@ -46,8 +46,8 @@ export default async function handler(req, res) {
     validationErrors.push('有効なメールアドレスを入力してください');
   }
   
-  if (!message || message.trim().length < 10) {
-    validationErrors.push('相談内容は10文字以上で入力してください');
+  if (!message || message.trim().length < 3) {
+    validationErrors.push('相談内容は3文字以上で入力してください');
   }
   
   if (validationErrors.length > 0) {
@@ -90,6 +90,10 @@ export default async function handler(req, res) {
       from: {
         email: 'techlab0web3@gmail.com',
         name: 'TechLab Contact Form'
+      },
+      replyTo: {
+        email: sanitizedData.email,
+        name: sanitizedData.name
       },
       subject: `【TechLab】新規お問い合わせ - ${sanitizedData.name}様`,
       html: `
