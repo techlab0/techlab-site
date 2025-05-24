@@ -150,19 +150,19 @@ export default function App() {
         
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-red-400">Problem</span>
-              <span className="text-gray-500 mx-4">→</span>
+              <span className="text-gray-500 mx-2 md:mx-4 block md:inline">↓</span>
               <span className="text-green-400">Solution</span>
             </h2>
             <p className="text-xl text-gray-400">課題から解決策への変革</p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             {/* Problems Side */}
-            <div className="relative">
+            <div className="relative order-1">
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500/20 to-transparent rounded-3xl blur-xl"></div>
-              <div className="relative bg-black/50 backdrop-blur-sm border border-red-500/30 rounded-3xl p-8">
+              <div className="relative bg-black/50 backdrop-blur-sm border border-red-500/30 rounded-3xl p-6 lg:p-8">
                 <div className="flex items-center mb-8">
                   <div className="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center mr-4">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,9 +222,9 @@ export default function App() {
             </div>
 
             {/* Solution Side */}
-            <div className="relative">
+            <div className="relative order-3 lg:order-2">
               <div className="absolute -inset-4 bg-gradient-to-l from-green-500/20 to-transparent rounded-3xl blur-xl"></div>
-              <div className="relative bg-black/50 backdrop-blur-sm border border-green-500/30 rounded-3xl p-8">
+              <div className="relative bg-black/50 backdrop-blur-sm border border-green-500/30 rounded-3xl p-6 lg:p-8">
                 <div className="flex items-center mb-8">
                   <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center mr-4">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,6 +299,15 @@ export default function App() {
             <div className="w-16 h-16 bg-cyan-400 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
               <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+              </svg>
+            </div>
+          </div>
+          
+          {/* Mobile Arrow */}
+          <div className="lg:hidden flex justify-center my-8">
+            <div className="w-12 h-12 bg-cyan-400 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
               </svg>
             </div>
           </div>
