@@ -1,7 +1,5 @@
-// Vercel Functions用の完全修正版
-const nodemailer = require('nodemailer');
-
-module.exports = async function handler(req, res) {
+// Dynamic Import を使用した代替案
+export default async function handler(req, res) {
   // CORS設定
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -17,6 +15,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  // Dynamic Import でnodemailerを読み込み
+  const nodemailer = await import('nodemailer');
+
   // デバッグ用ログ
   console.log('Environment variables check:');
   console.log('GMAIL_USER:', process.env.GMAIL_USER ? 'Set' : 'Not set');
@@ -29,8 +30,8 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ message: '必須項目が入力されていません' });
   }
 
-  // Gmail設定（完全CommonJSスタイル）
-  const transporter = nodemailer.createTransporter({
+  // Gmail設定（dynamic import対応）
+  const transporter = nodemailer.default.createTransporter({
     service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
@@ -82,4 +83,4 @@ module.exports = async function handler(req, res) {
       error: error.message
     });
   }
-};
+}
