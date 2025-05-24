@@ -26,7 +26,7 @@ export default function App() {
   return (
     <main className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black bg-opacity-90 backdrop-blur-md border-b border-gray-800">
+      <nav className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-xl border-b border-gray-800/50 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
@@ -53,7 +53,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         {/* Grid Background */}
         <div className="absolute inset-0 opacity-20">
           <div 
@@ -66,7 +66,65 @@ export default function App() {
           </div>
         </div>
         
-        {/* Floating Elements */}
+        {/* Dynamic Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Floating Geometric Shapes */}
+          <div className="absolute top-20 left-1/4 w-8 h-8 border border-cyan-400/40 rotate-45 animate-spin" style={{animationDuration: '8s'}}></div>
+          <div className="absolute top-1/3 right-1/4 w-6 h-6 border border-blue-400/30 animate-bounce" style={{animationDuration: '3s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-4 h-4 border border-cyan-300/50 rotate-45 animate-pulse" style={{animationDuration: '2s'}}></div>
+          
+          {/* Matrix-style Data Rain */}
+          <div className="absolute top-0 left-1/4 w-px h-20 bg-gradient-to-b from-cyan-400/80 to-transparent animate-pulse" style={{animationDuration: '1.5s'}}></div>
+          <div className="absolute top-0 left-1/2 w-px h-32 bg-gradient-to-b from-blue-400/60 to-transparent animate-pulse" style={{animationDuration: '2s', animationDelay: '0.5s'}}></div>
+          <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-cyan-300/70 to-transparent animate-pulse" style={{animationDuration: '1.8s', animationDelay: '1s'}}></div>
+          
+          {/* Glowing Orbs */}
+          <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-cyan-400/30 rounded-full animate-ping" style={{animationDuration: '3s'}}></div>
+          <div className="absolute top-2/3 left-1/5 w-6 h-6 bg-blue-400/20 rounded-full animate-ping" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
+          <div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-cyan-300/40 rounded-full animate-ping" style={{animationDuration: '2.5s', animationDelay: '2s'}}></div>
+          
+          {/* Circuit Board Pattern with enhanced glow */}
+          <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="circuit-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="transparent" />
+                <stop offset="50%" stopColor="#00ffff" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            
+            {/* Animated Circuit Paths */}
+            <path d="M50,200 L200,200 L250,150 L400,150 L450,100 L600,100" 
+                  stroke="#00ffff" strokeWidth="2" fill="none" filter="url(#glow)" 
+                  opacity="0.6" className="animate-pulse" style={{animationDuration: '3s'}} />
+            <path d="M100,400 L250,400 L300,350 L450,350 L500,300 L650,300" 
+                  stroke="#0ea5e9" strokeWidth="2" fill="none" filter="url(#glow)" 
+                  opacity="0.5" className="animate-pulse" style={{animationDuration: '4s', animationDelay: '1s'}} />
+            <path d="M150,150 L150,250 L200,300 L300,300" 
+                  stroke="#06b6d4" strokeWidth="2" fill="none" filter="url(#glow)" 
+                  opacity="0.4" className="animate-pulse" style={{animationDuration: '2.5s', animationDelay: '0.5s'}} />
+            
+            {/* Pulsing Circuit Nodes */}
+            <circle cx="200" cy="200" r="4" fill="#00ffff" opacity="0.8" className="animate-ping" style={{animationDuration: '2s'}} />
+            <circle cx="450" cy="350" r="3" fill="#0ea5e9" opacity="0.7" className="animate-ping" style={{animationDuration: '2.5s', animationDelay: '1s'}} />
+            <circle cx="300" cy="300" r="5" fill="#06b6d4" opacity="0.6" className="animate-ping" style={{animationDuration: '3s', animationDelay: '2s'}} />
+          </svg>
+          
+          {/* Scanning Lines */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-pulse" style={{animationDuration: '2s'}}></div>
+            <div className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent animate-pulse" style={{animationDuration: '3s', animationDelay: '1s'}}></div>
+          </div>
+        </div>
+        
+        {/* Floating Elements - keeping original for variety */}
         <div className="absolute top-20 right-20 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
         <div className="absolute top-40 left-20 w-1 h-1 bg-white rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
         <div className="absolute bottom-40 right-40 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -152,7 +210,10 @@ export default function App() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="text-red-400">Problem</span>
-              <span className="text-gray-500 mx-2 md:mx-4 block md:inline">↓</span>
+              <span className="text-gray-500 mx-2 md:mx-4">
+                <span className="hidden md:inline">→</span>
+                <span className="md:hidden block my-2">↓</span>
+              </span>
               <span className="text-green-400">Solution</span>
             </h2>
             <p className="text-xl text-gray-400">課題から解決策への変革</p>
