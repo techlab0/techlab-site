@@ -461,7 +461,330 @@ export default function App() {
         </div>
       </section>
 
-      {/* Case Studies */}
+      {/* Solutions Showcase */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-black border border-gray-700 rounded-full text-sm text-cyan-400 mb-6">
+              SOLUTIONS
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">導入可能なソリューション</h2>
+            <p className="text-xl text-gray-400">即座に効果を実感できる実用的なシステム</p>
+          </div>
+          
+          <div className="flex justify-center mb-8">
+            <div className="bg-black border border-gray-700 rounded-lg p-1 flex">
+              {[
+                { id: 'automation', label: '自動化' },
+                { id: 'ai', label: 'AI活用' },
+                { id: 'integration', label: 'システム連携' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-2 rounded-md transition-all duration-300 ${
+                    activeTab === tab.id 
+                      ? 'bg-cyan-400 text-black font-semibold' 
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeTab === 'automation' && [
+              {
+                title: "スプレッドシート自動化",
+                desc: "フォーム入力から集計・レポート作成まで自動処理",
+                time: "週10時間削減",
+                tech: "GAS + スプレッドシート"
+              },
+              {
+                title: "メール自動送信",
+                desc: "定期レポートや顧客フォローメールの自動配信",
+                time: "月5時間削減",
+                tech: "GAS + Gmail API"
+              },
+              {
+                title: "データ集計・通知",
+                desc: "売上データの自動集計とSlack/メール通知",
+                time: "日次作業を自動化",
+                tech: "GAS + Webhook"
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black border border-gray-800 rounded-2xl p-6 hover:border-cyan-400 transition-all duration-300">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <span className="text-xs bg-cyan-400 text-black px-2 py-1 rounded-full font-semibold">{item.time}</span>
+                </div>
+                <p className="text-gray-400 mb-4 leading-relaxed">{item.desc}</p>
+                <div className="border-t border-gray-800 pt-4">
+                  <span className="text-cyan-400 text-sm font-mono">{item.tech}</span>
+                </div>
+              </div>
+            ))}
+
+            {activeTab === 'ai' && [
+              {
+                title: "Discord Bot制作",
+                desc: "ChatGPT連携のDiscord Botで自動応答・情報配信",
+                time: "24時間対応",
+                tech: "Discord.js + ChatGPT API"
+              },
+              {
+                title: "AI活用コンサル",
+                desc: "業務に最適なAIツールの選定・導入支援",
+                time: "導入時間短縮",
+                tech: "ChatGPT + Claude活用"
+              },
+              {
+                title: "簡単なAI連携",
+                desc: "スプレッドシートやフォームにAI機能を追加",
+                time: "作業効率2倍",
+                tech: "GAS + OpenAI API"
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black border border-gray-800 rounded-2xl p-6 hover:border-cyan-400 transition-all duration-300">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <span className="text-xs bg-cyan-400 text-black px-2 py-1 rounded-full font-semibold">{item.time}</span>
+                </div>
+                <p className="text-gray-400 mb-4 leading-relaxed">{item.desc}</p>
+                <div className="border-t border-gray-800 pt-4">
+                  <span className="text-cyan-400 text-sm font-mono">{item.tech}</span>
+                </div>
+              </div>
+            ))}
+
+            {activeTab === 'integration' && [
+              {
+                title: "WordPress制作・カスタマイズ",
+                desc: "レスポンシブ対応のビジネスサイト制作",
+                time: "2週間で完成",
+                tech: "WordPress + PHP"
+              },
+              {
+                title: "フォーム連携システム",
+                desc: "問い合わせフォームからスプレッドシート・メール自動化",
+                time: "手作業ゼロ",
+                tech: "HTML + GAS"
+              },
+              {
+                title: "簡単なAPI連携",
+                desc: "外部サービスとスプレッドシートのデータ連携",
+                time: "リアルタイム同期",
+                tech: "GAS + REST API"
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black border border-gray-800 rounded-2xl p-6 hover:border-cyan-400 transition-all duration-300">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <span className="text-xs bg-cyan-400 text-black px-2 py-1 rounded-full font-semibold">{item.time}</span>
+                </div>
+                <p className="text-gray-400 mb-4 leading-relaxed">{item.desc}</p>
+                <div className="border-t border-gray-800 pt-4">
+                  <span className="text-cyan-400 text-sm font-mono">{item.tech}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-sm text-cyan-400 mb-6">
+              PRICING
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">導入プラン</h2>
+            <p className="text-xl text-gray-400">予算に応じて最適なプランをご提案</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Starter Plan */}
+            <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8 relative">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold mb-2">ライト</h3>
+                <p className="text-gray-400 mb-6">小規模自動化・WordPress制作</p>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">¥50,000<span className="text-lg text-gray-400">〜</span></div>
+                <p className="text-sm text-gray-500">完成までの総費用</p>
+              </div>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "WordPress サイト制作",
+                  "GAS による簡単な自動化",
+                  "スプレッドシート連携",
+                  "基本的なフォーム作成",
+                  "1ヶ月サポート"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <span className="text-gray-300 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="w-full block text-center py-3 border border-gray-600 text-gray-300 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 rounded-lg"
+              >
+                相談する
+              </button>
+            </div>
+
+            {/* Professional Plan */}
+            <div className="bg-gray-900 border-2 border-cyan-400 rounded-2xl p-8 relative scale-105">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-cyan-400 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                  おすすめ
+                </span>
+              </div>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold mb-2">スタンダード</h3>
+                <p className="text-gray-400 mb-6">AI活用・複数システム連携</p>
+                <div className="text-4xl font-bold text-cyan-400 mb-2">¥150,000<span className="text-lg text-gray-400">〜</span></div>
+                <p className="text-sm text-gray-500">パートナー連携時は別途費用</p>
+              </div>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "Discord Bot制作",
+                  "ChatGPT API連携",
+                  "複数ツール自動化",
+                  "AI活用コンサルティング",
+                  "3ヶ月サポート"
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <span className="text-white text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="w-full block text-center py-3 bg-cyan-400 text-black hover:bg-cyan-300 transition-all duration-300 rounded-lg font-semibold"
+              >
+                相談する
+              </button>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-gray-400 mb-4">※ すべてのプランで無料相談・要件ヒアリングを実施</p>
+            <div className="inline-flex items-center space-x-2 text-cyan-400">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm">まずは具体的な課題をお聞かせください</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-black border border-gray-700 rounded-full text-sm text-cyan-400 mb-6">
+              FAQ
+            </div>
+            <h2 className="text-4xl font-bold mb-6">よくある質問</h2>
+          </div>
+          
+          <div className="space-y-6">
+            {[
+              {
+                q: "技術的な知識がなくても導入できますか？",
+                a: "はい、問題ありません。お客様の業務内容をヒアリングし、最適なソリューションを提案・構築いたします。導入後の操作説明・サポートも充実しています。"
+              },
+              {
+                q: "小さな会社でも対応してもらえますか？",
+                a: "もちろんです。個人事業主から大企業まで、規模を問わず対応いたします。予算に応じてスモールスタートから始められるプランもご用意しています。"
+              },
+              {
+                q: "導入までにどのくらい時間がかかりますか？",
+                a: "シンプルな自動化なら1-2週間、AI機能付きシステムで1-2ヶ月程度です。緊急性がある場合は優先的に対応いたします。"
+              },
+              {
+                q: "他社で断られた複雑な要件でも対応可能ですか？",
+                a: "技術的に実現可能であれば対応いたします。まずは無料相談で詳細をお聞かせください。実現方法を含めて具体的にご提案します。"
+              },
+              {
+                q: "導入後のサポートはありますか？",
+                a: "はい。プランに応じて1-3ヶ月のサポート期間を設けており、その後も月額保守契約で継続サポートが可能です。"
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-black border border-gray-800 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold mb-3 text-cyan-400">Q. {faq.q}</h3>
+                <p className="text-gray-300 leading-relaxed">A. {faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-gray-900 border border-gray-700 rounded-full text-sm text-cyan-400 mb-6">
+              PROCESS
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">導入までの流れ</h2>
+            <p className="text-xl text-gray-400">スムーズな導入をサポートします</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "無料相談",
+                desc: "現在の課題や理想の業務フローをヒアリング。最適なソリューションを提案します。",
+                duration: "30分〜1時間"
+              },
+              {
+                step: "02", 
+                title: "要件定義",
+                desc: "詳細な仕様を決定し、開発スケジュールと費用を確定します。",
+                duration: "1週間程度"
+              },
+              {
+                step: "03",
+                title: "開発・制作",
+                desc: "決定した仕様に基づいてシステムを構築。進捗は定期的にご報告します。",
+                duration: "2週間〜2ヶ月"
+              },
+              {
+                step: "04",
+                title: "納品・サポート",
+                desc: "動作確認後に納品。操作説明とサポート期間でフォローアップします。",
+                duration: "継続的"
+              }
+            ].map((process, index) => (
+              <div key={index} className="text-center">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gray-900 border-2 border-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-cyan-400">{process.step}</span>
+                  </div>
+                  {index < 3 && (
+                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gray-700">
+                      <div className="w-1/2 h-full bg-cyan-400"></div>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{process.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">{process.desc}</p>
+                <div className="inline-block px-3 py-1 bg-gray-800 text-cyan-400 text-xs rounded-full">
+                  {process.duration}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="case-studies" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
