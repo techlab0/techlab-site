@@ -937,7 +937,7 @@ export default function App() {
               お問い合わせ
             </h2>
             <p className="text-xl text-gray-400 mb-8">
-              まずはお気軽にご相談ください。24時間以内にご返信いたします。
+              まずはお気軽にご相談ください。72時間以内にご返信いたします。
             </p>
           </div>
           
@@ -1012,7 +1012,7 @@ export default function App() {
                 {/* 送信状況表示 */}
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-900/50 border border-green-700 rounded-lg text-green-300">
-                    お問い合わせありがとうございます！24時間以内にご返信いたします。
+                    お問い合わせありがとうございます！72時間以内にご返信いたします。
                   </div>
                 )}
                 
