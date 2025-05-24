@@ -30,7 +30,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="/techlab_logo.png" 
+              src="/techlab_logo_dark.png" 
               alt="TechLab Logo" 
               className="h-8 w-auto object-contain"
               onError={(e) => {
@@ -42,7 +42,6 @@ export default function App() {
             <div className="w-10 h-10 border-2 border-cyan-400 rounded-lg items-center justify-center hidden">
               <div className="w-6 h-6 bg-cyan-400 rounded-full"></div>
             </div>
-            <span className="text-xl font-bold tracking-wider">TechLab</span>
           </div>
           <button
             onClick={() => scrollToSection('contact')}
@@ -77,7 +76,7 @@ export default function App() {
             {/* Logo in Hero Section */}
             <div className="mb-8">
               <img 
-                src="/techlab_logo.png" 
+                src="/techlab_logo_dark.png" 
                 alt="TechLab Logo" 
                 className="h-16 w-auto mx-auto mb-6 object-contain"
                 onError={(e) => {
@@ -641,7 +640,7 @@ export default function App() {
               <img 
                 src="/techlab_logo.png" 
                 alt="TechLab Logo" 
-                className="h-6 w-auto object-contain"
+                className="h-6 w-auto object-contain filter brightness-0 invert"
                 onError={(e) => {
                   // フォールバック：ロゴが見つからない場合はデフォルトアイコンを表示
                   e.target.style.display = 'none';
@@ -651,7 +650,6 @@ export default function App() {
               <div className="w-8 h-8 border border-cyan-400 rounded-lg items-center justify-center hidden">
                 <div className="w-4 h-4 bg-cyan-400 rounded-full"></div>
               </div>
-              <span className="text-lg font-bold">TechLab</span>
             </div>
             <div className="text-gray-500 text-sm">
               © {new Date().getFullYear()} TechLab. All rights reserved.
